@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <h1>{{student.name}}</h1>
-    <img :src="student.fave_animal" alt="student fave animal">
-    <p>{{student.useless_superpower}}</p>
-    <p>{{student.previous_occupation}}</p>
-  </div>
+  <router-link class='link' :to="{ path: `/individual/${hero.id}` }">
+    <div>
+      <h1>{{hero.name}}</h1>
+      <img :src="hero.fave_animal" alt="hero fave animal">
+      <p>{{hero.useless_superpower}}</p>
+      <p>{{hero.previous_occupation}}</p>
+    </div>
+  </router-link>
 </template>
 
 <script>
 export default {
-  props: ['student']
+  props: ['hero']
 }
 </script>
 
@@ -27,5 +29,8 @@ export default {
   img {
     max-width: 19vw;
     max-height: 30vh;
+  }
+  .link {
+    text-decoration: none;
   }
 </style>

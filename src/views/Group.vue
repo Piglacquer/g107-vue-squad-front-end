@@ -5,7 +5,7 @@
       <IndividualCard 
         v-for='hero in uselessSuperheroes' 
         :key="'hero' + hero.id"
-        :student='hero' />
+        :hero='hero' />
     </div>
   </div>
 </template>
@@ -14,24 +14,10 @@
 import IndividualCard from '../components/IndividualCard.vue'
 
 export default {
-  data() {
-    return {
-      uselessSuperheroes: null
-    }
-  },
   components: {
     IndividualCard
   },
-  methods: {
-    getUselessSuperheroes() {
-      fetch('https://g107-db.herokuapp.com/students')
-      .then(resp => resp.json())
-      .then(resp => this.uselessSuperheroes = resp.students)
-    }
-  },
-  mounted() {
-    this.getUselessSuperheroes()
-  }
+  props: ['uselessSuperheroes']
 }
 </script>
 

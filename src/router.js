@@ -20,6 +20,11 @@ export default new Router({
       path: '/squad',
       name: 'group',
       component: () => import('./views/Group.vue')
+    },
+    {
+      path: '/individual/:id',
+      name: 'individual',
+      component: () => import('./views/Individual.vue')
     }
   ]
 })

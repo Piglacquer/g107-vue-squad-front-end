@@ -5,9 +5,30 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/squad">Squad</router-link>
     </div>
-    <router-view/>
+    <router-view :uselessSuperheroes='uselessSuperheroes'/>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      uselessSuperheroes: null
+    }
+  },
+  methods: {
+    getUselessSuperheroes() {
+      fetch('https://g107-db.herokuapp.com/students')
+      .then(resp => resp.json())
+      .then(resp => this.uselessSuperheroes = resp.students)
+    }
+  },
+  mounted() {
+    console.log(process.env.VUE_APP_GOOGLE_API_KEY)
+    this.getUselessSuperheroes()
+  }
+}
+</script>
 
 <style>
 #app {
